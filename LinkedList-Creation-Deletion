@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Revision {
-  // class LL {
   static class Node {
     int data;
     Node next;
@@ -14,12 +13,13 @@ public class Revision {
 
   Node head = null;
 
+// creation of LinkedList
   public void creation() {
     int data, n;
     Scanner sc = new Scanner(System.in);
 
     do {
-      System.out.print("Enter Data: ");
+      System.out.print("Enter Data: ");  // having choice to enter the data at starting,end and at any index.
       data = sc.nextInt();
 
       Node ob = new Node(data);
@@ -67,6 +67,7 @@ public class Revision {
     } while (n == 1);
   }
 
+// Delete function
   public void delete() {
 
     int data, m;
@@ -79,7 +80,7 @@ public class Revision {
     else {
 
       do {
-        System.out.print("Enter 1--> beg , 2--> end and 3--> at any index to delete the element: ");
+        System.out.print("Enter 1--> beg , 2--> end and 3--> at any index to delete the element: ");   // having choice to delete the data at starting,end and at any index.
         int del = sc.nextInt();
 
         switch (del) {
@@ -122,6 +123,7 @@ public class Revision {
 
   }
 
+// Display function
   public void Transverse() {
 
     Node temp = head;
