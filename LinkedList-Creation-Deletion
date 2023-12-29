@@ -1,0 +1,153 @@
+import java.util.Scanner;
+
+public class Revision {
+  // class LL {
+  static class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+      this.data = data;
+      this.next = null;
+    }
+  }
+
+  Node head = null;
+
+  public void creation() {
+    int data, n;
+    Scanner sc = new Scanner(System.in);
+
+    do {
+      System.out.print("Enter Data: ");
+      data = sc.nextInt();
+
+      Node ob = new Node(data);
+
+      if (head == null) {
+        head = ob;
+      } else {
+
+        System.out.print("Enter 1--> beg , 2--> end and 3--> at any index: ");
+        int index = sc.nextInt();
+
+        switch (index) {
+          case 1:
+            ob.next = head;
+            head = ob;
+            break;
+
+          case 2:
+            Node temp = head;
+            while (temp.next != null) {
+              temp = temp.next;
+            }
+            temp.next = ob;
+            break;
+
+          case 3:
+            Node temp1 = head;
+            System.out.print("Enter the index value: ");
+            int newindex = sc.nextInt();
+
+            for (int i = 0; i < (newindex - 1); i++) {
+              temp1 = temp1.next;
+            }
+            ob.next = temp1.next;
+            temp1.next = ob;
+            break;
+
+          default:
+            System.out.println("Invalid choice");
+            break;
+        }
+      }
+      System.out.print("You want to enter more data? If yes press 1: ");
+      n = sc.nextInt();
+    } while (n == 1);
+  }
+
+  public void delete() {
+
+    int data, m;
+    Scanner sc = new Scanner(System.in);
+
+    if (head == null) {
+      System.out.println("LL is empty already");
+    }
+
+    else {
+
+      do {
+        System.out.print("Enter 1--> beg , 2--> end and 3--> at any index to delete the element: ");
+        int del = sc.nextInt();
+
+        switch (del) {
+          case 1:
+            Node temp = head;
+            temp = temp.next;
+            head = temp;
+            break;
+
+          case 2:
+            Node temp1 = head;
+            Node ptr = temp1.next;
+            while (ptr.next != null) {
+              temp1 = ptr;
+              ptr = ptr.next;
+            }
+            temp1.next = null;
+            break;
+
+          case 3:
+            Node temp2 = head;
+            Node ptr1 = temp2.next;
+            System.out.print("Enter the indext to delete the value:");
+            int delInd = sc.nextInt();
+            for (int i = 0; i < (delInd - 1); i++) {
+              temp2 = ptr1;
+              ptr1 = ptr1.next;
+            }
+            temp2.next = ptr1.next;
+            break;
+
+          default:
+            System.out.println("Invalid choice ");
+            break;
+        }
+        System.out.print("You want to delte more data? If yes press 1: ");
+        m = sc.nextInt();
+      } while (m == 1);
+    }
+
+  }
+
+  public void Transverse() {
+
+    Node temp = head;
+
+    try {
+      if (head == null) {
+        System.out.println("LL is empty");
+      }
+
+      else {
+        while (head != null) {
+          System.out.print(temp.data + " ");
+          temp = temp.next;
+        }
+      }
+    } catch (Exception e) {
+      System.out.println(" ");
+    }
+  }
+
+  public static void main(String[] args) {
+
+    Revision ob1 = new Revision();
+    ob1.creation();
+    ob1.delete();
+    ob1.Transverse();
+
+  }
+}
